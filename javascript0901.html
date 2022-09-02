@@ -11,21 +11,26 @@
 <body>
   <div id="root"></div>
   <script>
-    function elem(tagName) {
+    let arr1 = ["shop", "about", "contact", "account", "search", "bag"]
+
+    function elem(tagName, innerTag, arr) {
       if (typeof (tagName) === "string") {
+        let dongwook = `<${tagName}>`
         // 매개변수 tagName은 인수로 데이터타입 "string"일때, 작동하게 하기 위해
         // if() 조건제어문을 설치했다.
-        return `<${tagName}></${tagName}>`;
+        arr.forEach((item) => {
+          dongwook += `<${innerTag}>${item}</${innerTag}>`
+        })
+        dongwook += `</${tagName}>`
+        return dongwook;
         // if() 제어가 참으로 충족된다면, 곧바로 return문으로 인해 문자열이 출력된다.
       }
     }
     // 결과적으로 elem()함수가 호출되면 문자열로 바뀐다.
     const root = document.getElementById("root");
     // 문서에서 #root을 식별했다.
-    root.innerHTML = `
-      ${elem("header")}
-      ${elem("main")}
-      ${elem("footer")}
+    root.innerHTML += `
+      ${elem("ul", "li", arr1)}
     `;
     /*
     innerHTML 속성(property)를 사용했을때
@@ -34,6 +39,17 @@
 
     elem()함수는 문자열이고, 결과적으로 문자열이 innerHTML에 새겨진 결과문이기 때문에 새로운 디자인패턴으로 #root의 자식 태그를 구성했다.
     */
+
+
+
+
+    function plusElem() {
+      let arr1 = ["shop", "about", "contact", "account", "search", "bag"]
+      if (typeof (tagName) === "string") {
+        let dongwook = `<${tagName}>`
+        // header안에 div태그안에 arr요소를 하나씩 넣어서 arr길이 개수만큼 div를 출력해주세요.
+      }
+    }
   </script>
 </body>
 
