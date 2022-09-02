@@ -11,45 +11,57 @@
 <body>
   <div id="root"></div>
   <script>
-    let arr1 = ["shop", "about", "contact", "account", "search", "bag"]
+    // let arr1 = ["shop", "about", "contact", "account", "search", "bag"]
 
-    function elem(tagName, innerTag, arr) {
-      if (typeof (tagName) === "string") {
-        let dongwook = `<${tagName}>`
-        // 매개변수 tagName은 인수로 데이터타입 "string"일때, 작동하게 하기 위해
-        // if() 조건제어문을 설치했다.
-        arr.forEach((item) => {
-          dongwook += `<${innerTag}>${item}</${innerTag}>`
-        })
-        dongwook += `</${tagName}>`
-        return dongwook;
-        // if() 제어가 참으로 충족된다면, 곧바로 return문으로 인해 문자열이 출력된다.
-      }
-    }
-    // 결과적으로 elem()함수가 호출되면 문자열로 바뀐다.
-    const root = document.getElementById("root");
-    // 문서에서 #root을 식별했다.
-    root.innerHTML += `
-      ${elem("ul", "li", arr1)}
-    `;
-    /*
-    innerHTML 속성(property)를 사용했을때
-    문자열 중 태그로 해석되는 형태라면 문자열을 태그로 탈바꿈 시킨다.
-    textContent 속성은 이러한 기능을 지원하지 않는다.
+    // function elem(tagName, innerTag, arr) {
+    //   if (typeof (tagName) === "string") {
+    //     let dongwook = `<${tagName}>`
+    //     // 매개변수 tagName은 인수로 데이터타입 "string"일때, 작동하게 하기 위해
+    //     // if() 조건제어문을 설치했다.
+    //     arr.forEach((item) => {
+    //       dongwook += `<${innerTag}>${item}</${innerTag}>`
+    //     })
+    //     dongwook += `</${tagName}>`
+    //     return dongwook;
+    //     // if() 제어가 참으로 충족된다면, 곧바로 return문으로 인해 문자열이 출력된다.
+    //   }
+    // }
+    // // 결과적으로 elem()함수가 호출되면 문자열로 바뀐다.
+    // const root = document.getElementById("root");
+    // // 문서에서 #root을 식별했다.
+    // root.innerHTML += `
+    //   ${elem("ul", "li", arr1)}
+    // `;
+    // /*
+    // innerHTML 속성(property)를 사용했을때
+    // 문자열 중 태그로 해석되는 형태라면 문자열을 태그로 탈바꿈 시킨다.
+    // textContent 속성은 이러한 기능을 지원하지 않는다.
 
-    elem()함수는 문자열이고, 결과적으로 문자열이 innerHTML에 새겨진 결과문이기 때문에 새로운 디자인패턴으로 #root의 자식 태그를 구성했다.
-    */
-
-
-
-
-    function plusElem() {
+    // elem()함수는 문자열이고, 결과적으로 문자열이 innerHTML에 새겨진 결과문이기 때문에 새로운 디자인패턴으로 #root의 자식 태그를 구성했다.
+    // */
+    function plusElem(tagName, innerTag) {
       let arr1 = ["shop", "about", "contact", "account", "search", "bag"]
-      if (typeof (tagName) === "string") {
-        let dongwook = `<${tagName}>`
-        // header안에 div태그안에 arr요소를 하나씩 넣어서 arr길이 개수만큼 div를 출력해주세요.
-      }
+      // if (typeof (tagName) === "string") {
+      let dongwook = `<${tagName}>`;
+      arr1.forEach((item) => {
+        dongwook += `<${innerTag}>${item}</${innerTag}>`;
+      })
+      // dongwook += `</${tagName}>`;
+      return dongwook;
+      // header안에 div태그안에 arr요소를 하나씩 넣어서 arr길이 개수만큼 div를 출력해주세요.
     }
+    // }
+    const root = document.getElementById("root");
+    root.innerHTML = `${plusElem("header", "div")}`;
+    /*
+    function plueElem은 함수명 소괄호안 tagName, InnerTag는 파라미터이고
+    arr1 배열 꾸러미
+    dongwook을 변수명 짓고 백틱으로 문자열처리 root안에 들어갈 큰 부모 태그...
+    arr1 배열을 돌리기 위해 forEach사용 item은 배열안 문자들 뜻함
+    => 이후에는 변수 dongwook에 추가적인 형태(자식 태그, arr1 item자리를 붙여주고)
+    리턴으로 마무리
+    html root div 문서화후 안에 자식 header div 생성
+      */
   </script>
 </body>
 
